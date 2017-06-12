@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>PaPaGo</title>
+	<script src="jquery.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="main_1.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<style>
+			body{
+				background:#333 url(bg.jpg) repeat top left;
+				font-family:Arial;
+			}
+			span.reference{
+				position:fixed;
+				left:10px;
+				bottom:10px;
+				font-size:12px;
+			}
+			span.reference a{
+				color:#aaa;
+				text-transform:uppercase;
+				text-decoration:none;
+				text-shadow:1px 1px 1px #000;
+				margin-right:30px;
+			}
+			span.reference a:hover{
+				color:#ddd;
+			}
+			ul.sdt_menu{
+				margin-top:150px;
+			}
+					
+		</style>
+</head>
+<body>
+
+	<header class="container">
+    <div class="row">
+      <h1 class="col-sm-4">選擇要去的地方</h1>     
+    </div>
+  	</header>  
+
+	
+	 <section class="jumbotron">
+	    <div class="container">
+	      <div class="row text-center">
+	        <h2>美麗的風景</h2>
+	      	<h3>值得您停下腳步</h3>
+	        
+	      </div>
+	    </div>
+  	</section>
+
+	<section class="container">
+	<div class="row">
+	<form id="message_form" method="POST">
+      <figure class="col-sm-3">
+		<h2>北部</h2>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="台北市">
+		    <p>台北市</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="新北市" >
+		    <p>新北市</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="基隆" >
+		    <p>基隆</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="桃園" >
+		    <p>桃園</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="新竹" >
+		    <p>新竹</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="宜蘭" >
+		    <p>宜蘭</p>
+		  </label>
+		</div>
+		</figure>
+
+		<figure class="col-sm-3">
+		<h2>中部</h2>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="苗栗" >
+		    <p>苗栗</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="台中" >
+		    <p>台中</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="彰化" >
+		    <p>彰化</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="南投" >
+		    <p>南投</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="雲林" >
+		    <p>雲林</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="苗栗" >
+		    <p>苗栗</p>
+		  </label>
+		</div>
+		</figure>
+
+		<figure class="col-sm-3">
+		<h2>南部</h2>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="嘉義" >
+		    <p>嘉義</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="台南" >
+		    <p>台南</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="高雄" >
+		    <p>高雄</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="屏東" >
+		    <p>屏東</p>
+		  </label>
+		</div>
+		</figure>
+
+		<figure class="col-sm-3">
+		<h2>東部</h2>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="台東" >
+		    <p>台東</p>
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="location" value="花蓮" >
+		    <p>花蓮</p>
+		  </label>
+		</div>
+		</figure>
+	</form>
+	</div>
+	</section>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3 col-md-offset-4">						
+				<a type="button" name="ok" id="ok" value="確定" class="btn btn-primary" href='../index.html'>確定</a>
+			</div>						
+		</div>
+	</div>
+
+	
+	  <script language="Javascript">
+	    var btn=document.getElementById("ok");
+	    btn.onclick=function(){
+	      var obj=document.getElementsByName("location");
+	      var selected=[];
+	      for (var i=0; i<obj.length; i++) {
+	        if (obj[i].checked) {
+	          selected.push(obj[i].value);
+	          }
+	        }
+	      
+	      //alert("您想去的地方是 : " + selected.join());
+	      //selected=JSON.stringify(selected);
+	      //alert(selected);
+		  //href="../index.html"
+
+	      $.ajax({
+				    type: 'POST',
+				    url: "../addDest.php",
+				   // data: JSON.stringify(selected), // 轉化為Json字串
+				    dataType: 'json', // 希望server以Json格式回傳
+				    data:{name: selected},
+				    success: function(data) { // 傳送成功後所要做的事
+						alert(data.name);
+				    },
+				    error: function(xhr, type) {
+						alert("fail");
+				    }
+				});	
+				
+	      };
+	      
+	  </script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="main_5.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <style>
+			body{
+				height: 100%; 
+        		margin: 20; 
+        		padding: 0; 
+				background:#333 url(bg.jpg) repeat top left;
+				font-family:Arial;
+			}
+			span.reference{
+				position:fixed;
+				left:10px;
+				bottom:10px;
+				font-size:12px;
+			}
+			span.reference a{
+				color:#aaa;
+				text-transform:uppercase;
+				text-decoration:none;
+				text-shadow:1px 1px 1px #000;
+				margin-right:30px;
+			}
+			span.reference a:hover{
+				color:#ddd;
+			}
+			ul.sdt_menu{
+				margin-top:150px;
+			}
+			#map { 
+				margin:20;
+	        	height: 80%;
+	      	}
+					
+		</style>
+</head>
+
+<body>
+	<header class="container">
+	    <div class="row">
+	      <h1 class="col-sm-4">旅遊行程路線圖</h1>     
+	    </div>
+  	</header> 
+	<div id="map" style="width:100%;height:500px"></div>
+
+	<script>
+	var geocoder, popup, map, addr;
+	function myMap() {
+	  geocoder = new google.maps.Geocoder();
+	  popup = new google.maps.InfoWindow();
+	  var mapCanvas = document.getElementById("map");
+	  var mapOptions = {
+	    center: new google.maps.LatLng(22.9961288, 120.2171941), 
+	    zoom: 10
+	  }
+	  map = new google.maps.Map(mapCanvas, mapOptions);
+	  showDest();
+	}
+	function showDest(){
+		var oXHR=new XMLHttpRequest();
+		var params = "id="+"test";
+		oXHR.open("POST","showDest.php",true);
+		oXHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		oXHR.onreadystatechange= function(){
+		if(oXHR.readyState==4 &&(oXHR.status==200||oXHR.status==304)){
+				addr = oXHR.responseText;
+				alert(addr);
+				codeAddress();
+			}
+		}
+		oXHR.send(params);
+	}
+	 function codeAddress() {
+		var parsed = JSON.parse(addr);
+
+		var arr = [];
+
+		for(var x in parsed){
+			arr.push(parsed[x]);
+		}
+		for (i = 0; i < arr.length; i++) { 
+			address = arr[i]['Add'];
+			//alert(arr[0]['Add']);
+			geocoder.geocode( { 'address': address}, function(results, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+					map.setCenter(results[0].geometry.location);
+					var marker = new google.maps.Marker({
+						map: map,
+						position: results[0].geometry.location
+					});
+
+					//showAddress(results[0], marker);
+				} else {
+				//alert('找不到');
+			}
+			});
+		}
+	 }
+
+	  function showAddress(result, marker) {
+	        var popupContent = result.formatted_address;
+	        popup.setContent(popupContent);
+	        popup.open(map, marker);
+	  }
+	</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+	<!-- <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUvLUN7LCnjVTq1Z1jFBrR8JOUKVk6Es0&callback=initMap">
+    </script> -->
+
+</body>
+</html>

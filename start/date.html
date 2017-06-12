@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="calendar.js" type="text/javascript" language="javascript"></script>
+	<script src="jquery.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<title>PaPaGo</title>
+	<link rel="stylesheet" type="text/css" href="calendar.css">
+	<link rel="stylesheet" href="main_1.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<style>
+			body{
+				background:#333 url(bg.jpg) repeat top left;
+				font-family:Arial;
+			}
+			span.reference{
+				position:fixed;
+				left:10px;
+				bottom:10px;
+				font-size:12px;
+			}
+			span.reference a{
+				color:#aaa;
+				text-transform:uppercase;
+				text-decoration:none;
+				text-shadow:1px 1px 1px #000;
+				margin-right:30px;
+			}
+			span.reference a:hover{
+				color:#ddd;
+			}
+			ul.sdt_menu{
+				margin-top:150px;
+			}
+					
+		</style>
+</head>
+<body>
+
+	<header class="container">
+    <div class="row">
+      <h1 class="col-sm-4">甚麼時候出發</h1>     
+    </div>
+  	</header>  
+
+	
+	 <section class="jumbotron">
+	    <div class="container">
+	      <div class="row text-center">
+	        <h2>萬里無雲天氣晴</h2>
+	      	<h3>好日子正好出去玩</h3>
+	        
+	      </div>
+	    </div>
+  	</section>
+
+	<section class="container">
+  	<div class="row">
+  	<form id="message_form" method="POST">
+		<p class="Ray" class="col-sm-2">選定日期後請按確定</p>			
+		<input type="text" id="date" class="calendarSelectDate" class="col-sm-2" value=" " />		
+		<div id="calendarDiv"></div>
+	</form>	
+	</div>
+	</section>
+
+	<div class="container">
+		<div class="row">	
+			<div class="col-sm-3 col-md-offset-4">					
+				<a type="button" name="ok" id="ok" value="確定" class="btn btn-primary" href='../index.html'>確定</a>
+			</div>
+		</div>
+	</div>
+
+	
+	  <script language="javascript">
+	  //傳送選擇的日期給後端		
+		var btn=document.getElementById("ok");
+	    btn.onclick=function(){
+	      var value=document.getElementById("date").value;	　
+	      //alert("您選擇的日期是 : " + value);
+	      //value=JSON.stringify(value);
+	      //alert(value);
+	      $.ajax({
+				    type: 'POST',
+				    url: ,
+				    // data: JSON.stringify(value), 
+				    // contentType: 'application/json; charset=UTF-8',
+				    data:{name: value},
+				    dataType: 'json', 
+				    success: function(data) { 
+				    	alert(data.name);
+				    },
+				    error: function(xhr, type) {
+				    	alert("fail");
+				    }
+				});	
+	      	     
+	      };
+	      
+	  </script>
+
+
+</body>
+</html>
+
+
