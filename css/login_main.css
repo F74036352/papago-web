@@ -3,17 +3,11 @@ body {
   font-weight: 300;
   background:#333 url(bg.jpg) repeat top left;
 }
-#location{
+#sign_in{
   background:#333 url(bg.jpg) repeat top left;
 }
-#recommend{
+#sign_up{
   background:#333 url(bg.jpg) repeat top left;
-}
-figure legend{
-  font-size: 14px ;
-  font: bold Tahoma;
-  color:#33FFFF;
-  text-shadow:1px 1px 1px #000;
 }
 .check_button{	
 	text-align:center;
@@ -21,3 +15,5 @@ figure legend{
 #ok{
   color: white;
 }
+/*[data-role=page]{height: 100% !important; position:relative !important;}
+[data-role=footer]{bottom:0; position:absolute !important; top: auto !important; width:100%;}*/

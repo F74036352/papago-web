@@ -4,205 +4,264 @@
 <head>
 	<meta charset="utf-8" />
 	<title>PaPaGo</title>
-	<script src="jquery.js"></script>
+	<!-- <script src="jquery.js"></script> -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	<link rel="stylesheet" href="main_1.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-	<style>
-			body{
-				background:#333 url(bg.jpg) repeat top left;
-				font-family:Arial;
-			}
-			span.reference{
-				position:fixed;
-				left:10px;
-				bottom:10px;
-				font-size:12px;
-			}
-			span.reference a{
-				color:#aaa;
-				text-transform:uppercase;
-				text-decoration:none;
-				text-shadow:1px 1px 1px #000;
-				margin-right:30px;
-			}
-			span.reference a:hover{
-				color:#ddd;
-			}
-			ul.sdt_menu{
-				margin-top:150px;
-			}
-					
-		</style>
+	<link rel="stylesheet" href="main_1.css">	
+	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css"/>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" />
+	<!-- <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.zh-TW.utf8.js"></script> -->
+    
+	<script src="../js/getCookie.js"></script>
+    <script src="../js/setCookie.js"></script>
+    <script src="../js/deleteCookie.js"></script>
+    
+
 </head>
 <body>
+		<div data-role="page" id="location" data-theme="a">
+				<div data-role="header">
+					<a href="../index.html" rel="external" data-role="button" data-icon="back">返回</a>							
+		    		<h1 >選擇要去的地方</h1>        					
+		    	</div>	
+		    	<div data-role="navbar">
+		    		<ul>
+		        		<li><a href="#">全部地區</a></li>
+		        		<li><a href="#recommend" data-role="button" data-transition="slide">推薦地區</a></li>
+		    		</ul>
+				</div>
 
-	<header class="container">
-    <div class="row">
-      <h1 class="col-sm-4">選擇要去的地方</h1>     
-    </div>
-  	</header>  
+				<div data-role="content" class="ui-content">					
+					<form id="message_form" method="POST" action="demoform.asp">
+					<fieldset data-role="controlgroup">
+						<!-- <legend>旅行時間:</legend> -->
+						<figure>
+							<legend>開始旅行:</legend>
+							<input type="date" data-role="datebox" id="start" name="start" value="" data-options='{"mode": "calbox"}'>
+							<legend>準備回家:</legend>
+							<input type="date" data-role="datebox" id="back" name="back" value="" data-options='{"mode": "calbox"}'>
+						</figure>	
+						<!-- <legend>台灣各地:</legend> -->								
+						<figure>
+					 		<legend>北部地區:</legend>									  
+						    <input type="checkbox" name="location" id="1_play" data-mini="true" value="台北市">
+						    <label for="1_play">台北市</label>						  
+						    <input type="checkbox" name="location" id="2_play" data-mini="true" value="新北市" >
+						    <label for="2_play">新北市</label>																						
+						    <input type="checkbox" name="location" id="3_play" data-mini="true" value="基隆" >
+						    <label for="3_play">基隆</label>					 
+						    <input type="checkbox" name="location" id="4_play" data-mini="true" value="桃園" >
+						    <label for="4_play">桃園</label>					 										
+						    <input type="checkbox" name="location" id="5_play" data-mini="true" value="新竹" >
+						    <label for="5_play">新竹</label>					 																
+						    <input type="checkbox" name="location" id="6_play" data-mini="true" value="宜蘭" >
+						    <label for="6_play">宜蘭</label>					 															
+						    <input type="checkbox" name="location" id="7_play" data-mini="true" value="苗栗" >
+						    <label for="7_play">苗栗</label>									    
+						</figure>
+						<figure>
+							<legend>中部地區:</legend>
+							<input type="checkbox" name="location" id="8_play" data-mini="true" value="台中" >	    
+						    <label for="8_play">台中</label>					 															
+						    <input type="checkbox" name="location" id="9_play" data-mini="true" value="彰化" >
+						    <label for="9_play">彰化</label>						 																
+						    <input type="checkbox" name="location" id="10_play" data-mini="true" value="南投" >
+						    <label for="10_play">南投</label>		
+						</figure>
+						<figure>	    			 				
+							<legend>南部地區:</legend>		    											
+						    <input type="checkbox" name="location" id="11_play" data-mini="true" value="雲林" >
+						    <label for="11_play">雲林</label>						 														
+						    <input type="checkbox" name="location" id="12_play" data-mini="true" value="苗栗" >
+						    <label for="12_play">苗栗</label>						 					
+						    <input type="checkbox" name="location" id="13_play" data-mini="true" value="嘉義" >
+						    <label for="13_play">嘉義</label>						 													
+						    <input type="checkbox" name="location" id="14_play" data-mini="true" value="台南" >
+						    <label for="14_play">台南</label>						 															
+						    <input type="checkbox" name="location" id="15_play" data-mini="true" value="高雄" >
+						    <label for="15_play">高雄</label>						 															
+						    <input type="checkbox" name="location" id="16_play" data-mini="true" value="屏東" >
+						    <label for="16_play">屏東</label>									
+						</figure>
+						<figure>	    
+							<legend>東部地區:</legend>		    													
+						    <input type="checkbox" name="location" id="17_play" data-mini="true" value="台東" >
+						    <label for="17_play">台東</label>					 													
+						    <input type="checkbox" name="location" id="18_play" data-mini="true" value="花蓮" >
+						    <label for="18_play">花蓮</label>					 										
+						</figure>	    
+					</fieldset>
+					</form>
+					<div class="check_button">
+						<a href='../index.html' rel="external" data-role="button" data-icon="check" data-inline="true" name="ok" id="ok" value="確定">確定</a>
+					</div>									
+				</div>
+			<div data-role="footer" data-theme="a" data-position="fixed" data-fullscreen="true">						
+				<h4>想去哪 就去哪</h4>		
+			</div>
+		</div>
+		<!-- 推薦 -->
+		<div data-role="page" id="recommend" data-theme="a">
+				<div data-role="header">
+					<a href="../index.html" rel="external" data-role="button" data-icon="back">返回</a>							
+		    		<h1 >選擇要去的地方</h1>        					
+		    	</div>	
+		    	<div data-role="navbar">
+		    		<ul>
+		        		<li><a href="#location"  data-transition="slide" data-direction="reverse">全部地區</a></li>
+		        		<li><a href="#" data-role="button">推薦地區</a></li>
+		    		</ul>
+				</div>
 
-	
-	 <section class="jumbotron">
-	    <div class="container">
-	      <div class="row text-center">
-	        <h2>美麗的風景</h2>
-	      	<h3>值得您停下腳步</h3>
-	        
-	      </div>
-	    </div>
-  	</section>
+				<div data-role="content" class="ui-content">					
+					<form id="message_form" method="POST" action="demoform.asp">
+					<fieldset data-role="controlgroup">						
+						<figure id="r_time" style="display:block">
+							<legend>開始旅行:</legend>
+							<input type="date" data-role="datebox" id="start" name="start" value="" data-options='{"mode": "calbox"}'>
+							<legend>準備回家:</legend>
+							<input type="date" data-role="datebox" id="back" name="back" value="" data-options='{"mode": "calbox"}'>
+						</figure>
+						<div class="check_button" id="t_button" style="display:block">
+						<a href='' data-role="button" data-icon="check" data-inline="true" name="ok" id="r_ok" value="推薦">推薦</a>
+						</div>
+					</fieldset>
+					</form>		
 
-	<section class="container">
-	<div class="row">
-	<form id="message_form" method="POST">
-      <figure class="col-sm-3">
-		<h2>北部</h2>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="台北市">
-		    <p>台北市</p>
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="新北市" >
-		    <p>新北市</p>
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="基隆" >
-		    <p>基隆</p>
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="桃園" >
-		    <p>桃園</p>
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="新竹" >
-		    <p>新竹</p>
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="宜蘭" >
-		    <p>宜蘭</p>
-		  </label>
-		</div>
-		</figure>
+					<form id="message_form" method="POST" action="demoform.asp">
+					<fieldset data-role="controlgroup">										
+						<figure id="r_location" >
+					 		<legend id="r_text" style="display:none">好天氣推薦</legend>
+					 										  
+						    <input type="checkbox" name="location" id="0_play" value="" style="display:none">
+						    <label id="0" for="0_play" style="display:none"> <img id="0_1" src=""> <img id="0_2" src=""> <img id="0_3" src=""></label>
 
-		<figure class="col-sm-3">
-		<h2>中部</h2>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="苗栗" >
-		    <p>苗栗</p>
-		  </label>
+						    <input type="checkbox" name="location" id="1_play" value="" style="display:none">
+						    <label id="1" for="1_play" style="display:none"> <img id="1_1" src=""> <img id="1_2" src=""> <img id="1_3" src=""></label>																						
+						    <input type="checkbox" name="location" id="2_play" value="" style="display:none">
+						    <label id="2" for="2_play" style="display:none"> <img id="2_1" src=""> <img id="2_2" src=""> <img id="2_3" src=""></label>					 
+						    <input type="checkbox" name="location" id="3_play" value="" style="display:none">
+						    <label id="3" for="3_play" style="display:none"> <img id="3_1" src=""> <img id="3_2" src=""> <img id="3_3" src=""></label>					 										
+						    <input type="checkbox" name="location" id="4_play" value="" style="display:none">
+						    <label id="4" for="4_play" style="display:none"> <img id="4_1" src=""> <img id="4_2" src=""> <img id="4_3" src=""></label>					 																
+						    <input type="checkbox" name="location" id="5_play" value="" style="display:none">
+						    <label id="5" for="5_play" style="display:none"> <img id="5_1" src=""> <img id="5_2" src=""> <img id="5_3" src=""></label>					 															
+						    <input type="checkbox" name="location" id="6_play" value="" style="display:none">
+						    <label id="6" for="6_play" style="display:none"> <img id="6_1" src=""> <img id="6_2" src=""> <img id="6_3" src=""></label>						 														
+						    <input type="checkbox" name="location" id="7_play" value="" style="display:none">
+						    <label id="7" for="7_play" style="display:none"> <img id="7_1" src=""> <img id="7_2" src=""> <img id="7_3" src=""></label>
+						</figure>							   
+					</fieldset>
+					</form>
+					<div class="check_button" id="r_button" style="display:none">
+						<a href='../index.html' rel="external" data-role="button" data-icon="check" data-inline="true" name="w_ok" id="w_ok" value="確定">確定</a>
+					</div>									
+				</div>
+			<div data-role="footer" data-theme="a" data-position="fixed" data-fullscreen="true">						
+				<h4>想去哪 就去哪</h4>		
+			</div>				
 		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="台中" >
-		    <p>台中</p>
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="彰化" >
-		    <p>彰化</p>
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="南投" >
-		    <p>南投</p>
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="雲林" >
-		    <p>雲林</p>
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="苗栗" >
-		    <p>苗栗</p>
-		  </label>
-		</div>
-		</figure>
-
-		<figure class="col-sm-3">
-		<h2>南部</h2>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="嘉義" >
-		    <p>嘉義</p>
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="台南" >
-		    <p>台南</p>
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="高雄" >
-		    <p>高雄</p>
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="屏東" >
-		    <p>屏東</p>
-		  </label>
-		</div>
-		</figure>
-
-		<figure class="col-sm-3">
-		<h2>東部</h2>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="台東" >
-		    <p>台東</p>
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input type="checkbox" name="location" value="花蓮" >
-		    <p>花蓮</p>
-		  </label>
-		</div>
-		</figure>
-	</form>
-	</div>
-	</section>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-3 col-md-offset-4">						
-				<a type="button" name="ok" id="ok" value="確定" class="btn btn-primary" href='../index.html'>確定</a>
-			</div>						
-		</div>
-	</div>
 
 	
-	  <script language="Javascript">
-	    var btn=document.getElementById("ok");
+		<script language="Javascript">
+		var btn=document.getElementById("r_ok");//推薦的部分先傳日期
 	    btn.onclick=function(){
-	      var obj=document.getElementsByName("location");
-	      var selected=[];
-	      for (var i=0; i<obj.length; i++) {
-	        if (obj[i].checked) {
-	          selected.push(obj[i].value);
-	          }
-	        }
+	    	var start=document.getElementsByName("start");
+	    	var back=document.getElementsByName("back");	    	
+	    	var selected=[];
+	    	selected.push(start[0].value);//add start date
+	    	selected.push(back[0].value);//add back date
+	    	
+			$.ajax({
+				    type: 'POST',
+				    url: "../addDest.php",
+				   // data: JSON.stringify(selected), // 轉化為Json字串
+				    dataType: 'json', // 希望server以Json格式回傳
+				    data:{name: selected},
+				    success: function(data) { // 傳送成功後所要做的事
+						alert(data.name);
+						JData = eval(data);
+						var i = 0;
+						//alert(JData[0].name);
+						$("#r_time").attr("style","display:none");
+						$("#t_button").attr("style","display:none");
+						$("#r_text").attr("style","display:block");
+						$("#r_button").attr("style","display:block");
+		                $.each(JData, function() { 
+							$("#"+i.toString()+"_play").attr("value",JData[i].name);
+							$("#"+i.toString()+"_play").attr("style","display:block");
+							$("#"+i.toString()).attr("style","display:block");
+							document.getElementById(i.toString()).innerHTML=JData[i].name;       
+							i++;
+						});
+				    },
+				    error: function(xhr, type) {
+				    	alert("error");
+						JData = [{ name: "台南"},
+						         { name: "新竹"},
+						         { name: "台北"},
+						         { name: "新北"},
+						         { name: "高雄"},
+						         { name: "屏東"},
+						         { name: "桃園"},
+						         { name: "嘉義"},]
+				        
+						var i = 0;
+						$("#r_time").attr("style","display:none");
+						$("#t_button").attr("style","display:none");
+						$("#r_text").attr("style","display:block");
+						$("#r_button").attr("style","display:block");
+						$.each(JData, function() { 
+						  $("#"+i.toString()+"_play").attr("value",JData[i].name);
+						  $("#"+i.toString()+"_play").attr("style","display:block");
+						  $("#"+i.toString()).attr("style","display:block");
+						  document.getElementById(i.toString()).innerHTML=JData[i].name+" <img id=\""+i.toString()+"_1\""+"src=\"\">"+" <img id=\""+i.toString()+"_2\""+"src=\"\">"+" <img id=\""+i.toString()+"_3\""+"src=\"\">";
+						  document.getElementById(i.toString()+"_1").src="../images/1.png";
+						  document.getElementById(i.toString()+"_2").src="../images/2.png";
+						  document.getElementById(i.toString()+"_3").src="../images/3.png";						  
+						  //document.getElementById(i.toString()).innerHTML=JData[i].name;
+						  // document.getElementById(i.toString()).innerHTML=JData[i].name+" <img src=\"..\/images\/1.png\">"
+						  // +" <img src=\"..\/images\/2.png\">"+" <img src=\"..\/images\/3.png\">";      
+						  i++;
+						});
+						
+				    }
+				});					
+	      	};				
+		  		
+		</script>
+
+	<script language="Javascript">
+		var btn=document.getElementById("ok");//一般未推薦
+	    btn.onclick=function(){	    	
+	    	var obj=document.getElementsByName("location");
+	    	var start=document.getElementsByName("start");
+	    	var back=document.getElementsByName("back");
+	    	var selected=[];
+
+	    	selected.push(start[0].value);//add start date
+	    	selected.push(back[0].value);//add back date
+
+	    	for (var i=0; i<obj.length; i++) {
+	    	if (obj[i].checked) {
+	        	selected.push(obj[i].value);
+	        	}
+	        }  
+	    // var btn=document.getElementById("ok");
+	    // btn.onclick=function(){
+	    //   var obj=document.getElementsByName("location");
+	    //   var selected=[];
+	    //   for (var i=0; i<obj.length; i++) {
+	    //     if (obj[i].checked) {
+	    //       selected.push(obj[i].value);
+	    //       }
+	    //     }
 	      
 	      //alert("您想去的地方是 : " + selected.join());
 	      //selected=JSON.stringify(selected);
@@ -221,11 +280,36 @@
 				    error: function(xhr, type) {
 						alert("fail");
 				    }
-				});	
-				
+				});				
 	      };
+
+
+	    var btn=document.getElementById("w_ok");//選推薦的地點
+	    btn.onclick=function(){	    	
+	    	var obj=document.getElementsByName("location");	    	
+	    	var selected=[];
+	    	for (var i=0; i<obj.length; i++) {
+	    	if (obj[i].checked) {
+	        	selected.push(obj[i].value);
+	        	}
+	        }
+			$.ajax({
+				    type: 'POST',
+				    url: "../addDest.php",
+				   // data: JSON.stringify(selected), // 轉化為Json字串
+				    dataType: 'json', // 希望server以Json格式回傳
+				    data:{name: selected},
+				    success: function(data) { // 傳送成功後所要做的事
+						alert(data.name);
+				    },
+				    error: function(xhr, type) {
+						alert("fail");
+				    }
+				});					
+	      	};	        
 	      
-	  </script>
+	</script>
+
 
 </body>
 </html>

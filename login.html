@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>PaPaGo</title>
+	<!-- <script src="jquery.js"></script> -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/login_main.css">	
+	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css"/>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script src="getCookie.js"></script>
+    <script src="setCookie.js"></script>
+    <script src="deleteCookie.js"></script>
+</head>
+<body>
+		<div data-role="page" id="sign_in" data-theme="a">
+		
+				<div data-role="header">
+					<a href="index.html" rel="external" data-role="button" data-icon="back">back</a>							
+		    		<h1 >user</h1>        					
+		    	</div>			    
+				<div data-role="navbar">
+				    <ul>
+				        <li><a href="#">sign in</a></li>
+				        <li><a href="#sign_up" data-transition="slide">sign up</a></li>
+				    </ul>
+				</div>
+				<div data-role="content" class="ui-content">					
+					<form method="post" action="/action_page_post.php">
+					    <div class="ui-field-contain">
+					    	<label for="account">Account:</label>
+					        <input type="text" name="account" id="account">       
+					        <label for="password">Password:</label>
+					        <input type="text" name="password" id="password">
+					    </div>				      
+				    </form>
+					<div class="check_button">
+						<a href='' rel="external" data-role="button" data-icon="check" data-inline="true" name="in_ok" id="in_ok" value="確定">sign in</a>					
+					</div>									
+				</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">						
+				<h4></h4>		
+			</div>
+			
+		</div>
+		<div data-role="page" id="sign_up" data-theme="a">
+		
+				<div data-role="header">
+					<a href="index.html" rel="external" data-role="button" data-icon="back">back</a>							
+		    		<h1 >user</h1>        					
+		    	</div>			    
+				<div data-role="navbar">
+				    <ul>
+				        <li><a href="#sign_in" data-transition="slide" data-direction="reverse">sign in</a></li>
+				        <li><a href="#">sign up</a></li>
+				    </ul>
+				</div>
+				<div data-role="content" class="ui-content">					
+					<form method="post" action="/action_page_post.php">
+					    <div class="ui-field-contain">
+					    	<label for="password">Name:</label>
+					        <input type="text" name="name" id="name">
+					        <label for="password">Age:</label>
+					        <input type="text" name="age" id="age">	      					      					    
+					    	<label for="account">Account:</label>
+					        <input type="text" name="account" id="account">       
+					        <label for="password">Password:</label>
+					        <input type="text" name="password" id="password">					        
+					        <label for="password">E-mail:</label>
+					        <input type="text" name="E-mail" id="E-mail">
+					    </div>
+					    <div class="ui-field-contain">    
+					        <fieldset data-role="controlgroup" data-type="horizontal">
+							    <legend>有無機車駕照:</legend>
+							    <label for="yes">Yes</label>
+							    <input type="radio" name="motor" id="yes" value="yes">
+							    <label for="no">No</label>
+							    <input type="radio" name="motor" id="no" value="no">
+							</fieldset>
+							<fieldset data-role="controlgroup" data-type="horizontal">    
+							    <legend>有無汽車駕照:</legend>
+							    <label for="yes">Yes</label>
+							    <input type="radio" name="car" id="yes" value="yes">
+							    <label for="no">No</label>
+							    <input type="radio" name="car" id="no" value="no">							     
+							</fieldset>				        
+					    </div>
+					</form>    
+					<div class="check_button">
+						<a href='index.html' rel="external" data-role="button" data-icon="check" data-inline="true" name="up_ok" id="up_ok" value="確定">sign up</a>					
+					</div>									
+				</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">						
+				<h4></h4>		
+			</div>
+			
+		</div>
+
+	  <script language="Javascript">
+	    var btn=document.getElementById("in_ok");//sign in
+	    btn.onclick=function(){
+	      var account=document.getElementsByName("account");
+	      var password=document.getElementsByName("password");
+	      var selected=[];
+	      selected.push(account[0].value);
+	      selected.push(password[0].value);	    	      
+	      //alert("您想去的地方是 : " + selected.join());
+	      //selected=JSON.stringify(selected);
+	      //alert(selected);
+		  //href="../index.html"
+
+	      $.ajax({
+				    type: 'POST',
+				    url: "../addDest.php",
+				   // data: JSON.stringify(selected), // 轉化為Json字串
+				    dataType: 'json', // 希望server以Json格式回傳
+				    data:{name: selected},
+				    success: function(data) { // 傳送成功後所要做的事
+						alert(data.name);//傳到後端，要回傳登入成功跳轉
+				    },
+				    error: function(xhr, type) {						
+						setCookie1("username",selected[0],1);	
+						alert(getCookie1("username"));
+						password[0].value=getCookie1("username");											   
+				    }
+				});	
+				
+	      };
+
+	    var btn2=document.getElementById("up_ok");//sign up 
+	    btn2.onclick=function(){
+	      var obj=document.getElementsByName("location");
+	      var selected=[];
+	      for (var i=0; i<obj.length; i++) {
+	        if (obj[i].checked) {
+	          selected.push(obj[i].value);
+	          }
+	        }
+	      
+	      //alert("您想去的地方是 : " + selected.join());
+	      //selected=JSON.stringify(selected);
+	      //alert(selected);
+		  //href="../index.html"
+
+	      $.ajax({
+				    type: 'POST',
+				    url: "../addDest.php",
+				   // data: JSON.stringify(selected), // 轉化為Json字串
+				    dataType: 'json', // 希望server以Json格式回傳
+				    data:{name: selected},
+				    success: function(data) { // 傳送成功後所要做的事
+						alert(data.name);//傳到後端，要回傳登入成功跳轉
+				    },
+				    error: function(xhr, type) {
+						alert("fail");
+				    }
+				});	
+				
+	      };
+	      
+	  </script>
+
+</body>
+</html>

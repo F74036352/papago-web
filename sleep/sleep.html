@@ -1,218 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<script src="calendar.js" type="text/javascript" language="javascript"></script>
-	<script src="jquery.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<title>PaPaGo</title>
-	<link rel="stylesheet" type="text/css" href="calendar.css">
 	<link rel="stylesheet" href="main_3.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-	<style>
-			body{
-				background:#333 url(bg.jpg) repeat top left;
-				font-family:Arial;
-			}
-			span.reference{
-				position:fixed;
-				left:10px;
-				bottom:10px;
-				font-size:12px;
-			}
-			span.reference a{
-				color:#aaa;
-				text-transform:uppercase;
-				text-decoration:none;
-				text-shadow:1px 1px 1px #000;
-				margin-right:30px;
-			}
-			span.reference a:hover{
-				color:#ddd;
-			}
-			ul.sdt_menu{
-				margin-top:150px;
-			}
-					
-		</style>
+	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css"/>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
 </head>
+
 <body>
-		<header class="container">
-    <div class="row">
-      <h1 class="col-sm-4">旅程的歇腳處</h1>     
-    </div>
-  	</header>  
+		<div data-role="page" id="sleep" data-theme="a">
+			
+			<div data-role="header">
+				<a href="../index.html" rel="external" data-role="button" data-icon="back">返回</a>		    
+			    <h1>旅程的歇腳處</h1>     
+			</div>
+			<div data-role="navbar">
+				<ul>
+				    <li><a href="#">依照距離</a></li>
+				   	<li><a href="#">依照排名</a></li>
+		 		</ul>
+			</div>   			  	 
+
+			<div data-role="content" class="ui-content">		 
+				<form id="message_form" method="POST" action="demoform.asp">
+				<fieldset data-role="controlgroup">		
+						<figure>					 
+						    <input type="checkbox" name="location" value="" id="0_play" style="display:none">
+						    <label id="0" for="0_play"> </label>						   			  			
+						    <input type="checkbox" name="location" value="" id="1_play" style="display:none">
+						    <label id="1" for="1_play"> </label>						   			 			
+						    <input type="checkbox" name="location" value="" id="2_play" style="display:none">
+						    <label id="2" for="2_play"> </label>						   			 
+						    <input type="checkbox" name="location" value="" id="3_play" style="display:none">
+						    <label id="3" for="3_play"> </label>						   			  
+						    <input type="checkbox" name="location" value="" id="4_play" style="display:none">
+						    <label id="4" for="4_play"> </label>						   			    
+						</figure>
+						<figure>  			
+						    <input type="checkbox" name="location" value="" id="5_play" style="display:none">
+						    <label id="5" for="5_play"> </label>				    		  
+						    <input type="checkbox" name="location" value="" id="6_play" style="display:none">
+						    <label id="6" for="6_play"> </label>				    		  
+						    <input type="checkbox" name="location" value="" id="7_play" style="display:none">
+						    <label id="7" for="7_play"> </label>				    		  
+						    <input type="checkbox" name="location" value="" id="8_play" style="display:none">
+						    <label id="8" for="8_play"> </label>				    		  
+						    <input type="checkbox" name="location" value="" id="9_play" style="display:none">
+						    <label id="9" for="9_play"> </label>				    		  
+						    <input type="checkbox" name="location" value="" id="10_play" style="display:none">
+						    <label id="10" for="10_play"> </label>				    			  
+						    <input type="checkbox" name="location" value="" id="11_play" style="display:none">
+						    <label id="11" for="11_play"> </label>				    			  
+						    <input type="checkbox" name="location" value="" id="12_play" style="display:none">
+						    <label id="12" for="12_play"> </label>				    			  
+						    <input type="checkbox" name="location" value="" id="13_play" style="display:none">
+						    <label id="13" for="13_play"> </label>						    			 
+						    <input type="checkbox" name="location" value="" id="14_play" style="display:none">
+						    <label id="14" for="14_play"> </label>						    		  
+						</figure>
+						<figure>			
+						    <input type="checkbox" name="location" value="" id="15_play" style="display:none">
+						    <label id="15" for="15_play"> </label>				    			  
+						    <input type="checkbox" name="location" value="" id="16_play" style="display:none">
+						    <label id="16" for="16_play"> </label>						    			 
+						    <input type="checkbox" name="location" value="" id="17_play" style="display:none">
+						    <label id="17" for="17_play"> </label>						    
+						    <input type="checkbox" name="location" value="" id="18_play" style="display:none">
+						    <label id="18" for="18_play"> </label>						    			  
+						    <input type="checkbox" name="location" value="" id="19_play" style="display:none">
+						    <label id="19" for="19_play"> </label>						    
+						    <input type="checkbox" name="location" value="" id="20_play" style="display:none">
+						    <label id="20" for="20_play"> </label>						    			 
+						</figure>
+				</fieldset>  
+				</form>	
+				<div class="check_button">
+					<a href='../index.html' rel="external" data-role="button" data-icon="check" data-inline="true" name="ok" id="ok" value="確定">確定</a>
+				</div>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">						
+				<h4>一覺好眠</h4>		
+			</div>
+		</div>
 
 	
-	 <section class="jumbotron">
-	    <div class="container">
-	      <div class="row text-center">
-	        <h2>飯店</h2><br>
-	      	<h3>休息 是為了走更長遠的路</h3>
-	        
-	      </div>
-	    </div>
-  	</section>
-<!--
-	<div id="result" class="container">
-	   <div class="span7 offset2">       
-	     <table id="JSON_table" class="table table-striped">
-	     </table>
-	   </div>
-	</div>
--->	
-	<section class="container">
-	<div class="row">	
-	<form id="message_form" method="POST">	
-			<figure class="col-sm-3">
-			<div class="checkbox">
-			  <label>
-			    <input type="checkbox" name="location" value="" id="0_play" style="display:none">
-			    <p id="0" class="p1">   </p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="1_play" style="display:none">
-			    <p id="1" class="p1">   </p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="2_play" style="display:none">
-			    <p id="2" class="p1">   </p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="3_play" style="display:none">
-			    <p id="3" class="p1">   </p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="4_play" style="display:none">
-			    <p id="4" class="p1">   </p>
-			  </label>
-			</div>  
-			</figure>
-			<figure class="col-sm-3">  
-			<div class="checkbox">
-			  <label>
-			    <input type="checkbox" name="location" value="" id="5_play" style="display:none">
-			    <p id="5" class="p1"></p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="6_play" style="display:none">
-			    <p id="6" class="p1"></p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="7_play" style="display:none">
-			    <p id="7" class="p1"></p>
-			  </label>
-			</div>
-			<div class="checkbox">
-			  <label>
-			    <input type="checkbox" name="location" value="" id="8_play" style="display:none">
-			    <p id="8" class="p1"></p>
-			  </label>
-			</div>
-			<div class="checkbox">
-			  <label>
-			    <input type="checkbox" name="location" value="" id="9_play" style="display:none">
-			    <p id="9" class="p1"></p>
-			  </label>
-			</div>
-			</figure>
-			<figure class="col-sm-3">  
-			<div class="checkbox"> 
-			  <label>
-			    <input type="checkbox" name="location" value="" id="10_play" style="display:none">
-			    <p id="10" class="p1"></p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="11_play" style="display:none">
-			    <p id="11" class="p1"></p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="12_play" style="display:none">
-			    <p id="12" class="p1"></p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="13_play" style="display:none">
-			    <p id="13" class="p1"></p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="14_play" style="display:none">
-			    <p id="14" class="p1"></p>
-			  </label>
-			</div>  
-			</figure>
-			<figure class="col-sm-3">
-			<div class="checkbox">
-			  <label>
-			    <input type="checkbox" name="location" value="" id="15_play" style="display:none">
-			    <p id="15" class="p1"></p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="16_play" style="display:none">
-			    <p id="16" class="p1"></p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="17_play" style="display:none">
-			    <p id="17" class="p1"></p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="18_play" style="display:none">
-			    <p id="18" class="p1"></p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="19_play" style="display:none">
-			    <p id="19" class="p1"></p>
-			  </label>
-			</div>
-			<div class="checkbox">  
-			  <label>
-			    <input type="checkbox" name="location" value="" id="20_play" style="display:none">
-			    <p id="20" class="p1"></p>
-			  </label>
-			</div>  
-			</figure>  
-	</form>	
-	</div>
-	</section>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-3 col-md-offset-4">						
-				<a type="button" name="ok" id="ok" value="確定" class="btn btn-primary" href='../index.html'>確定</a>
-			</div>			
-		</div>
-	</div>
 
 <!--模擬結果-->
-<!--
-<script src="js/jquery.min.js"></script>  
+
+<!-- <script src="js/jquery.min.js"></script>  
 <script type="text/javascript">
   	//假設傳入的JSON內容如下：
 JData = [{ name: "文章牛肉"},
@@ -227,7 +107,15 @@ JData = [{ name: "文章牛肉"},
          { name: "國榮肉燥飯"},
          { name: "阿憨鹹粥"},
          { name: "倫敦派"},
-         { name: "大肥鴨"},]
+         { name: "大肥鴨"},
+         { name: "文章牛肉"},
+         { name: "阿霞飯店"},
+         { name: "六千牛肉"},
+         { name: "香香小吃"},
+         { name: "無名米糕"},
+         { name: "蛋蛋豪"},
+         { name: "黑記魚湯"},
+         { name: "花梅蘭"},]
 
 var i = 0;
 $.each(JData, function() { 
@@ -236,8 +124,8 @@ $.each(JData, function() {
   document.getElementById(i.toString()).innerHTML=JData[i].name;       
   i++;
 });
-</script>
--->
+</script> -->
+
 <!--最終接收-->	
 	<script src="js/jquery.min.js"></script>  
 	<script type="text/javascript">

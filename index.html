@@ -1,171 +1,151 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html>
     <head>
         <title>PaPaGo</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="description" content="Slide Down Box Menu with jQuery and CSS3" />
-        <meta name="keywords" content="jquery, css3, sliding, box, menu, cube, navigation, portfolio, thumbnails"/>
-		<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
-        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-        <script src="phonegap.js"></script>
-        <style>
-			body{
-				background:#333 url(bg.jpg) repeat top left;
-				font-family:Arial;
-			}
-			span.reference{
-				position:fixed;
-				left:10px;
-				bottom:10px;
-				font-size:12px;
-			}
-			span.reference a{
-				color:#aaa;
-				text-transform:uppercase;
-				text-decoration:none;
-				text-shadow:1px 1px 1px #000;
-				margin-right:30px;
-			}
-			span.reference a:hover{
-				color:#ddd;
-			}
-			ul.sdt_menu{
-				margin-top:20px;						
-			}
-			/*h1.title{
-				text-indent:-9000px;
-				background:transparent url(title.png) no-repeat top left;
-				width:633px;
-				height:69px;
-			}
-			*/
-			
-		</style>
+
+		<!-- <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/> -->                
+
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css"/>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>      
+       	<script src="getCookie.js"></script>
+    	<script src="setCookie.js"></script>
+    	<script src="deleteCookie.js"></script>
     </head>
 
     <body>
     	
 
-		<div class="content">
-			<header id="top_header" class="container">
-			<div>
+		<!-- <div class="content"> -->
+	<div data-role="page" id="choosetour" data-theme="a">
+			<!-- <header id="top_header" class="container"> -->			
+		<div data-role="header">			
+			<a href="login.html" rel="external">登入</a>
+    		<h1 >Let's Pa Pa Go !<br>展開一趟美好的旅程</h1>        					
+    	</div>	  
 
-    			<h1 >Let's Pa Pa Go !<br>讓我們開始一趟美好的旅程吧</h1>
-    			
-    		</div>	
-    		</header>
-
-    		<section class="jumbotron">
-			    <div class="container">
-			      <div class="row text-center">
-			        <h2></h2>
-			      	<h3></h3>
-			        
-			      </div>
-			    </div>
-		  	</section>
-
-    		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
- 		
-			<ul id="sdt_menu" class="sdt_menu">
-				<li>
-					<a href="#">
-						<img src="images/2.jpg" alt=""/>
-						<span class="sdt_active"></span>
-						<span class="sdt_wrap">
-							<span class="sdt_link">去哪裡玩</span>
-							<span class="sdt_descr">選擇你旅行的地點</span>
-						</span>
-					</a>
-					<div class="sdt_box">
-						<a href="start/location.html">地點</a>
-						<a href="start/date.html">日期</a>						
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="images/3.jpg" alt=""/>
-						<span class="sdt_active"></span>
-						<span class="sdt_wrap">
-							<span class="sdt_link">想住哪裡</span>
-							<span class="sdt_descr">選擇你喜愛的小窩</span>
-						</span>
-					</a>
-					<div class="sdt_box">
-							<a href="sleep/sleep.html">飯店</a>
-							<!--<a href="sleep/sleep_1.html">民宿</a>
-							<a href="#">青年旅社</a>-->
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="images/5.jpg" alt=""/>
-						<span class="sdt_active"></span>
-						<span class="sdt_wrap">
-							<span class="sdt_link">來玩甚麼</span>
-							<span class="sdt_descr">想玩甚麼就玩甚麼</span>
-						</span>
-					</a>
-					<div class="sdt_box">
-							<a href="play/play.html">熱門景點</a>
-							<!--<a href="#">名勝古蹟</a>							
-							<a href="#">藝文活動</a>
-							<a href="#">購物天堂</a>-->
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="images/1.jpg" alt=""/>
-						<span class="sdt_active"></span>
-						<span class="sdt_wrap">
-							<span class="sdt_link">吃飽喝足</span>
-							<span class="sdt_descr">大口吃才能用力玩</span>
-						</span>
-					</a>
-					<div class="sdt_box">
-							<!--<a href="#">早餐</a>
-							<a href="#">中餐</a>							
-							<a href="#">早午餐</a>
-							<a href="#">下午茶</a>
-							<a href="#">晚餐</a>
-							<a href="#">宵夜</a>-->
-							<a href="eat/eat.html">小吃美食</a>
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="images/4.jpg" alt=""/>
-						<span class="sdt_active"></span>
-						<span class="sdt_wrap">
-							<span class="sdt_link">旅行方式</span>
-							<span class="sdt_descr">心目中的第幾名</span>
-						</span>
-					</a>
-					<div class="sdt_box">
-						<a href="#"><br>怎麼玩 都簡單</a>						
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="images/6.jpg" alt=""/>
-						<span class="sdt_active"></span>
-						<span class="sdt_wrap">
-							<span class="sdt_link">準備出發</span>
-							<span class="sdt_descr">開始行程規劃囉</span>
-						</span>
-					</a>
-					<div class="sdt_box">
-						<a href="line/line.html"><br>Ready Go!!<br> 路線規劃</a>
-												
-					</div>
-				</li>
-			</ul>
+		<div data-role="navbar">
+		    <ul>
+		        <li><a href="#">規劃旅行</a></li>
+		        <li><a href="#nowtour" data-transition="slide">目前行程</a></li>
+		    </ul>
 		</div>
-        
+
+		<div data-role="content" class="ui-content">				    
+				<ul id="sdt_menu" class="sdt_menu">			
+					<li>
+						<a class="ui-btn" href="start/location.html" rel="external" data-transition="slide" id="picture1" data-role="button" >
+							<!-- <img src="images/2.jpg" alt=""/> -->
+							<span class="sdt_active"></span>
+							<span class="sdt_wrap">
+								<span class="sdt_link">去哪裡玩</span>
+								<span class="sdt_descr">選擇你旅行的地點</span>
+							</span>
+						</a>
+						<!-- <div class="sdt_box">
+							<a href="start/location.html">地點</a>
+							<a href="start/date.html">日期</a>						
+						</div> -->
+					</li>
+					<li>
+						<a class="ui-btn" href="sleep/sleep.html" rel="external" data-transition="slide"  id="picture2">
+							<!-- <img src="images/3.jpg" alt=""/> -->
+							<span class="sdt_wrap">
+								<span class="sdt_link">想住哪裡</span>
+								<span class="sdt_descr">選擇你喜愛的小窩</span>
+							</span>
+						</a>
+						<!-- <div class="sdt_box">
+							<a href="sleep/sleep.html">飯店</a>								
+						</div> -->
+					</li>
+					<li>
+						<a href="play/play.html" rel="external" class="ui-btn" id="picture3">
+							<!-- <img src="images/5.jpg" alt=""/> -->
+							<span class="sdt_active"></span>
+							<span class="sdt_wrap">
+								<span class="sdt_link">來玩甚麼</span>
+								<span class="sdt_descr">想玩甚麼就玩甚麼</span>
+							</span>
+						</a>
+						<!-- <div class="sdt_box">
+								<a href="play/play.html">熱門景點</a>								
+						</div> -->
+					</li>			
+					<li>
+						<a href="eat/eat.html" rel="external" class="ui-btn" id="picture4">
+							<!-- <img src="images/1.jpg" alt=""/> -->
+							<span class="sdt_active"></span>
+							<span class="sdt_wrap">
+								<span class="sdt_link">吃飽喝足</span>
+								<span class="sdt_descr">大口吃才能用力玩</span>
+							</span>
+						</a>
+						<!-- <div class="sdt_box">								
+								<a href="eat/eat.html">小吃美食</a>
+						</div> -->
+					</li>
+					<li>
+						<a href="#" class="ui-btn" id="picture5">
+							<!-- <img src="images/4.jpg" alt=""/> -->
+							<span class="sdt_active"></span>
+							<span class="sdt_wrap">
+								<span class="sdt_link">旅行方式</span>
+								<span class="sdt_descr">心目中的第幾名</span>
+							</span>
+						</a>
+						<!-- <div class="sdt_box">
+							<a href="#"><br>怎麼玩 都簡單</a>						
+						</div>  -->
+					</li>
+					<li>
+						<a href="#" class="ui-btn" id="picture6">
+							<!-- <img src="images/6.jpg" alt=""/> -->
+							<span class="sdt_active"></span>
+							<span class="sdt_wrap">
+								<span class="sdt_link">準備出發</span>
+								<span class="sdt_descr">開始行程規劃囉</span>
+							</span>
+						</a>
+						<!--  <div class="sdt_box">
+							<a href="line/line.html"><br>Ready Go!!</a>
+						</div> --> 
+					</li>				
+				</ul>				
+		</div>
+
+		<div data-role="footer" data-theme="a" data-position="fixed">
+			<h4>旅行 從現在開始</h4>			
+		</div>
+	</div>
+
+    <div data-role="page" id="nowtour" data-theme="a">
+    	<div data-role="header">			
+			<a href="#">登入</a>
+    		<h1 >Let's Pa Pa Go !<br>展開一趟美好的旅程</h1>        					
+    	</div>		
+    	<div data-role="navbar">
+		    <ul>
+		        <li><a href="#choosetour" data-transition="slide" data-direction="reverse">規劃旅行</a></li>
+		        <li><a href="#">目前行程</a></li>
+		    </ul>
+		</div>	
 		
-        <!-- The JavaScript -->
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<div data-role="content" class="ui-content">
+			<p>目前行程:無</p>
+		</div>
+		
+		
+		<div data-role="footer" data-theme="a" data-position="fixed">
+			<h4>旅行 就是這麼簡單</h4>			
+		</div>
+	</div>
+     <!-- The JavaScript -->
+       <!--  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script type="text/javascript" src="jquery.easing.1.3.js"></script>
         <script type="text/javascript">
             $(function() {
@@ -197,7 +177,7 @@
 						if($sub_menu.length){
 							var left = '170px';
 							if($elem.parent().children().length == $elem.index()+1)
-								left = '-170px';
+								left = '170px';
 							$sub_menu.show().animate({'left':left},200);
 						}	
 					});
@@ -222,6 +202,6 @@
 						 .animate({'top':'25px'},500);
 				});
             });
-        </script>
+        </script>       -->   
     </body>
 </html>
